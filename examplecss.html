@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Classes and Ids</title>
+  <title>CSS Example</title>
   <style>
     /*p {
       color: green;
@@ -17,38 +17,195 @@
       font-size: 100%;
     }
     .bluebox {
-      background-color: #3A5795;
+      /*background-color: #3A5795;*/
+      background-image: url(exampleimages/figure2.jpg);
+      background-size: 100% 190%;
+      background-origin: border-box;
       color: white;
-      height: auto;
-      width: auto;
+      height: 200px;
+      width: 500px;
       padding: 16px;
       border: 10px red ridge;
+      margin: 10px 15px 20px 25px;
+      float: left;
+      position: fixed;
+      left: 50px;
+      top: 100px;
+      z-index: 1;
+      /* visibility: hidden; */
+      /* display: none; */
+      font-weight: bold;
+      font-style: oblique;
+      text-align: center;
+      font-family: serif;
+    }
+    .bluebox:hover {
+      font-size: 4em;
     }
     .yellowbox {
-      background-color: rgb(170, 187, 47);
-      height: auto;
+      /*background-color: rgb(170, 187, 47);*/
+      background-image: url(exampleimages/figure1.png);
+      background-size: 250px 150px;
+      background-position: top;
+      background-repeat: no-repeat;
+      height: 100px;
       width: auto;
       padding: 3em 60px 20px 10px;
       border-width: 5px 10px 15px 20px;
       border-color: black rgb(172, 154, 159) red blue;
       border-style: outset;
+      outline-style: dotted;
+      outline-color: blue;
+      outline-width: thick;
+      margin: 40px;
+      /* float: right; */
+      /* clear: both; */
+      position: relative;
+      left: 75px;
+      top: 125px;
+      z-index: 2;
+      text-decoration: overline;
+      font-size: 3em;
+      text-align: justify;
+
     }
     .greenbox {
       background-color: #31AF37;
-      height: auto;
-      width: auto;
+      height: 100px;
+      width: 200px;
       padding: 40px 10px;
       border-width: 30px 60px;
       border-style: groove;
       border-color: rgb(48, 56, 167);
       border-radius: 20px;
+      margin: 20px 40px;
+      /* float: right; */
+      position: absolute;
+      left: 150px;
+      top: 160px;
+      letter-spacing: 5px;
+      text-shadow: 2px 2px white;
+      text-indent: 20px;
+      z-index: 3;
+      font-family: monospace;
+      font-size: 18px;
+      /* overflow: hidden; */
+      /* white-space: nowrap; */
+      /* text-overflow: ellipsis; */
+      word-break: break-all;
+      /* word-wrap: break-word; */
+    }
+    .greenbox:hover {
+      overflow: hidden;
+      white-space: normal;
+      text-overflow: clip;
     }
     .great {
       background-color: rgb(46, 179, 228);
+      display: block;
     }
     p {
       margin: 0px;
       background-color: rgb(191, 138, 124);
+    }
+    #figure {
+      background: url(exampleimages/figure2.jpg) -1200px -350px;
+      width: 250px;
+      height: 250px;
+      opacity: 0.3;
+    }
+    ul.ulClass1 {
+      list-style: lower-latin;
+
+    }
+    ul.ulClass1 li {
+      list-style-image: url(exampleimages/list.png);
+    }
+    ul.ulClass2 {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+    }
+    ul.ulClass2 li {
+      background-image: url(exampleimages/list.png);
+      background-repeat: no-repeat;
+      /* background-position: 5px 5px; */
+      padding-left: 45px;
+    }
+    #item4:link {
+      text-shadow: black 1px 1px;
+    }
+    #item4:hover {
+      font-size: 12px;
+    }
+    #item5:active {
+      color: green;
+    }
+    #item5:visited {
+      color: red;
+    }
+    #gradient1 {
+      height: 100px;
+      width: 500px;
+      background: linear-gradient(25deg,green,yellow,black);
+    }
+    #gradient2 {
+      height: 100px;
+      width: 500px;
+      background: linear-gradient(25deg,rgba(255,0,0,0.8),rgba(255,0,0,0.2));
+    }
+    #gradient3 {
+      height: 100px;
+      width: 500px;
+      background: radial-gradient(circle,green,yellow,black);
+    }
+    #transformation {
+      height: 100px;
+      width: 500px;
+      position: relative;
+      /* transform: rotate(25deg); */
+      /* transform: translate(50px 50px); */
+      /* transform: scale(0.4); */
+      /* transform: scale(0.2,0.7); */
+      /* transform: skewX(20deg); */
+      /* transform: skewY(30deg); */
+      /* transform: skew(5deg, 10deg); */
+      /* transform: rotateX(75deg); */
+      /* transform: rotateY(45deg); */
+    }
+    #transition {
+      height: 100px;
+      width: 250px;
+      transition: width 3s, height 1s, transform 5s;
+    }
+    #transition:hover {
+      width: 500px;
+      height: 200px;
+      transform:skewY(20deg);
+    }
+    #animation1 {
+      width: 50px;
+      height: 40px;
+      background-color: green;
+      animation: crazy 5s;
+    }
+    @keyframes crazy {
+      from{width: 50px; background-color: green}
+        to{width: 100px; background-color: yellow}
+    }
+    #animation2 {
+      width: 100px;
+      height: 30px;
+      background-color: yellow;
+      position: relative;
+      animation: moving 10s;
+    }
+    @keyframes moving {
+      0%{background-color: green; left: 0px; top: 0px;}
+      10%{background-color: red; left: 200px; top: 0px;}
+      40%{background-color: gray; left: 200px; top: 200px;}
+      90%{background-color: purple; left: 0px; top: 200px;}
+      100%{background-color: pink; left: 0px; top: 0px;}
     }
   </style>
 </head>
@@ -71,8 +228,42 @@
   </div>
   <div class="greenbox">
     <p>
-      Microsoft
+      Microsoft Microsoft Microsoft Microsoft Microsoft Microsoft
+      Microsoft Microsoft Microsoft Microsoft Microsoft Microsoft
+      Microsoft Microsoft Microsoft Microoooooooooooooooooooooooooooosoft
     </p>
   </div>
+  <img id="figure" />
+  <ul class="ulClass1">Unordered List 1:
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+  <ul class="ulClass2">Unordered List 2:
+    <li><a id="item4" href="item4">Item 4</a></li>
+    <li><a id="item5" href="http://www.amazon.com.br">Item 5</a></li>
+    <li><a id="item6" href="item6">Item 6</a></li>
+  </ul>
+  <p id="gradient1">
+    Gradient1
+  </p>
+  <p id="gradient2">
+    Gradient2
+  </p>
+  <p id="gradient3">
+    Gradient3
+  </p>
+  <p id="transformation">
+    Transformation
+  </p>
+  <p id="transition">
+    Transition
+  </p>
+  <p id="animation1">
+    Animation
+  </p>
+  <p id="animation2">
+    Animation2
+  </p>
 </body>
 </html>
