@@ -1,0 +1,155 @@
+- Loading Jquery
+	Though download and storage inside a folder within the website. Then, the
+HTML links that file within the document.
+	The link can be made though internet using Google CDN to make the HTML
+load faster.
+<script src="https://ajax.googleaps.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+</script>
+
+- Selecting HTML elements
+$("*") -> select all elements
+$(x).css(propertie, value) -> change the propertie to value to x element
+$("p") -> select all paragraphs
+$("div > p") -> select all paragraphs inside divs
+$("div ~ p") -> select all paragraphs outside divs
+$("#great") -> select the HTML element with id equals to "great"
+$(".orange") -> select all the elements that has the class equals to orange
+$("div.bluebox") -> select all the div with the class equals to "bluebox"
+$("x:first-child") -> select first child of the x element
+$("x:last-child") -> select last child of the x element
+$("[href]") -> select all elements with a href propertie
+$("tr:even") -> select all the even rows from tr
+$("tr:odd") -> select all the odd rows from tr
+$(":input") -> select all the input from the page
+$(":Submit") -> select all the buttons submit from the page
+$("div:has(table)") -> select all the divs that has a table tag
+
+- Respond to events
+$("p").click(function() {}) -> action for the click in the paragraphs elements
+$(this) -> represents the elements that received the element
+$("p").mouseover(function() {}) -> action for the mouseover for the paragraph
+$("p").mouseout(function() {}) -> action when the mouse go out of the element
+$("input").focus(function() {}) -> action when the input has the focus
+$("input").blur(function() {}) -> action when the input leave the focus
+$("input").keyup(function() {}) -> action when user type something
+$("#input").val() -> change the value for the element with id equals to "input"
+
+- Change HTML content and attributes
+$(x).text() -> change the content of the x element
+$(x).html() -> change the html of the x element
+$(x).attr({"y" : "z", ... }) -> change the attribute y to value z and so on
+$(x).append(param) -> add param into x element content at the end
+$(x).prepend(param) -> add param into x element content at the beginning
+$(x).after(param) -> add param after the x element content
+$(x).before(param) -> add param before the x element content
+$(x).addClass(param) -> add the class propertie into the x element
+$(x).innerHeight() -> get the innerHeight propertie from x element
+$(x).outerHeight() -> get the outerHeight (body + padding) propertie from the x element
+$(x).removeClass(param) -> removes the class propertie from the x element
+$(x).toggleClass(param) -> add or remove param class to the x element
+$(x).hide() -> change the display to none of the x element
+$(x).wrap(param) -> Wrap the x element inside the param tag
+$(x).find("p") -> Find the "p" tag in x element
+
+- JQuery Effects
+$(x).fadeOut(time, function() {}) -> fade out effect until disappear within time and execute function when the fadeOut finishes.
+$(x).fadeIn() -> fade in effect until disappear within time and execute function when the fadeOut finishes.
+$(x).fadeToggle(duration) -> Toggle the fade effect of the x element during the durantion time in miliseconds.
+$(x).animate({propertie:'value', ...}, duration) -> Animate x element changing the propertie to value
+$(x).delay(time).animate({propertie:'value', ...}, duration) -> Animate x element changing the propertie to value after the time delay
+
+- AJAX
+$(x).load(fileLocation) -> Use ajax to load the fileLocation
+$(x).load("ajax/somedata.txt #paragraph1"); -> load only element with id equals to paragraph1 into the x element
+$(x).click(function() {
+	$.ajax({
+		url : "ajax/somedata.txt",
+		success : function(data) {
+			$("#microsoft").html(data);
+		}
+	});
+})
+
+$(x).click(function() {
+	$.ajax({url : "ajax/somedata.txt",}).done(function(data) {
+		$("#microsoft").html(data);
+	});
+})
+
+- JQuery UI Introduction
+Call the style of the jquery theme the same way as the jquery basic functions.
+You can change the theme altering the name of the folder after "theme/".
+Get the page as the UI adding the commom classes as properties of the tags used within the page.
+Examples: ui-corner-all and ui-state-error
+$(x).draggable() -> make the x element draggable by the user
+$(x).draggable({
+	axis: "y" | "x" -> permission to drag in this direction
+	revert: true -> get to the previous state after drop the element
+	start: function () { -> action to do when the drag start
+		$(y).css("background-color", "#682DAE")
+	},
+	drag: function () { -> action to do when dragging element
+		$(y)[...]
+	},
+	stop: function () { -> action to do when dragging stops
+		$(y)[...]
+	}
+})
+$(x).droppable({ -> Make x droppable
+	drop: function() { -> Action to do when something is dropped within
+		$(this).[...]
+	}
+	accept: "#id1", -> Acceptable elemnts to drop
+	helper: "clone", ->
+	appendTo: "body" -> Which elements will append
+})
+$(x).droppable({ -> Make x droppable
+	drop: function(event, ui) {
+		$("<p></p>").text(ui.draggable.text()).appentTo(this);
+		$("<li></li>").text(ui.draggable.text()).appentTo(this);
+	}
+})
+$(x).resizable(); -> Make the x element resizable
+$(x).resizable({
+	maxHeight 200,
+	minHeight: 50,
+	maxWidth: 300,
+	aspectRadio: 4/3, -> maintain the same aspect radio
+	ghost: true, -> set the animation of a shadow of resize enabled
+	containment: id, -> resize within the element with that id
+	animate: true, -> add the animation when resized
+	alsoResize: id -> which other element will be resized when x is resized
+	resize: function () { -> Action when resized
+		$(y).accordion("refresh"); -> refresh the accordion properties
+	}
+});
+$(x).selectable(); -> Make the x element selectable using class (ui-selecting / ui-selected)
+$(x).selectable({
+	stop: function() { -> Action when the selecting stops
+		$(".ui-selected").each(function() {
+			$("<p></p>").text.($(this).text()).appendTo("#microsoft");
+		})
+	}
+});
+$(x).sortable(); -> Make the x element sortable (change elements in a ul tag, for example)
+$(x).sortable({
+	placeholder: "ui-state-highlight", -> make a placeholder when moving the item
+	cancel: ".notSortable", -> Set a class to not sortable items
+
+});
+$(x, y).sortable({
+	connectWith: ".connectWith" -> Make the items of x y interchangable
+-> Make sure the style of x and y has a minimum height for them to exist, even with no items
+})
+$(x).accordion(); -> Make element x an accordion with heading and paragraphs, for instance
+$(x).accordion({
+	collapsible: true, -> make sure the all x elements are collapsible
+	icons: { -> change the tick icons (normal or active) using jquery ui
+		header: "ui-icon-circle-arrow-e",
+		activeHeader: "ui-icon-circle-arrow-s"
+	},
+	heightStyle: "content", -> set the height of the accordion according to the height of the content
+	heightStyle: "fill" -> another type of height setting
+});
+
+- JQuery UI Regex
