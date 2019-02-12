@@ -151,5 +151,136 @@ $(x).accordion({
 	heightStyle: "content", -> set the height of the accordion according to the height of the content
 	heightStyle: "fill" -> another type of height setting
 });
-
-- JQuery UI Regex
+****************INPUT AUTOCOMPLETE****************
+<style>
+	.ui-autocomplete{
+		max-height: 100px;
+		overflow-y: auto;
+	}
+	#city{
+		width: 200px;
+	}
+</style>
+<p>Input the city: <input id="city"></p>
+$("city").autocomplete({
+	source: ["London", "Paris", "Brussels", "Madrid"]
+});
+****************INPUT AUTOCOMPLETE****************
+$(x).button();
+$(x).button({
+	icons: {
+		primary: "left",
+		secondary: "right"
+	},
+	text: false
+});
+$(x).buttonset(); -> modify the style of checkboxes or radio buttons
+****************DATA*PICKER****************
+$(x).datepicker();
+$(x).datepicker({
+	showAnim: "slideDown" -> "drop" / "fadeIn"
+	changeYear: true,
+	numberOfMonths: 2, -> number of months to show at the same time
+	dateFormat: "mm/dd/yy", -> "m/d/y" (3/2/15)
+	showOn: "button", -> button to show the datepicker
+	buttonImage: "images/calendar.png",
+	buttonImageOnly: true, -> set the image with no button layout
+	minDate: +1, -> The minimum date is tomorrow
+	maxDate: "+12M +10D", -> The maximum date is after 12 months and 10 days
+	onClose: function(selectedDate) { -> what to do when the datepicker closes
+		$(y).datepicker("option", "minDate", selectedDate);
+	}
+});
+****************DATA*PICKER****************
+******************DIALOGS******************
+$(x).dialog(); -> Show a dialog with a title inside de tag
+$(x).dialog({
+	autoOpen: false, -> no show when page loads
+	modal: true, ->
+	buttons: {
+		"Go to previous page" : function(){
+			window.history.back();
+		},
+		"Cancel" : function(){
+			$(this).dialog("close");
+		}
+	}
+});
+$(x).dialog("open"); -> Opens the dialog
+******************DIALOGS******************
+********************MENU*******************
+$(x).menu(); -> Change a ul tag into a menu
+********************MENU*******************
+**************PROGRESS*BARS****************
+$(x).progressbar(); -> change a div into a progress bar
+$(x).progressbar({
+	value: 25 -> set the progress to 25%
+});
+-----Example:-----
+<div id="progress">
+	<div id="label"></div>
+</div>
+<button>Run</button>
+$("progress").progressbar();
+var x = 0;
+$("button").click(function(){
+	$("#label").text("In progress ...");
+	var progress = setInterval(function(){
+		x++;
+		$("#label").text(x + '%');
+		$("#progress").progressbar("option", "value", x);
+		if (x > 99) {
+			clearInterval(progress);
+		}
+	}, 100);
+})
+**************PROGRESS*BARS****************
+***************SELECT*MENU*****************
+$(x).selectmenu(); -> make a select and option tags into a dropdown list
+***************SELECT*MENU*****************
+*****************SLIDER********************
+$(x).slider(); -> transform a div tag into a slider input
+$(x).slider({
+	slide: function(event, ui){
+		$(y).val(ui.value); -> put the value of x into an input y
+		$(y).val(ui.values[0] + ' - ' + ui.values[1]); -> if using range, get the min and max values
+	},
+	min: 0, -> min value
+	max: 25, -> max value
+	range: true, -> change one input into two inputs for the minimum and maximum
+	values: [0, 25], -> start values
+	step: 5 -> set the each tick of the slider
+});
+$(y).val($(x).slider("values", 0) + ' - ' + $(x).slider("values", 1));
+*****************SLIDER********************
+***********SPINNER*TABS*TOOLTIPS***********
+------SPINNER------
+$(x).spinner() -> change an input into a spinner
+$(x).spinner({
+	min: 0,
+	max: 100,
+	step: 5
+});
+------TABS------
+<div id="container">
+<ul>
+<li><a href="#tab1">tab1</a></li>
+<li><a href="#tab1">tab1</a></li>
+</ul>
+<div id="tab1"><p>Content 1</p></div>
+<div id="tab1"><p>Content 1</p></div>
+</div>
+$("container").tabs() -> x is a container div with ul li tags and divs inside
+$("container").tabs({
+	collapsible: true, -> make tabs collapsible
+	event: "mouseover", -> show contents of the tab on mouseover
+}).find(".ui-tabs-nav").sortable({ -> make the tabs sortible
+	axis: "x"
+});
+------TOOLTIP------
+$(x).tooltip({ -> make the tag x with the property 'title' will be with a tooltip
+	show: {effect: "explode"}
+	show: {effect: "slideDown"}
+});
+$(document).tooltip(); -> all the tags with title property will get a tooltip
+***********SPINNER*TABS*TOOLTIPS***********
