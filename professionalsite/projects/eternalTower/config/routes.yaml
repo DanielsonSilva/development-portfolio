@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+index:
+  path: /lucky/number
+  controller: App\Controller\LuckyController::numberAction
+
+eternalTowerLogin:
+  path: /eternaltower/login
+  controller: App\Controller\LoginController::indexAction
